@@ -59,9 +59,21 @@ function setFilter(value: TaskFilter) {
     <h3 v-if="!tasks.length">Task mavjud emas</h3>
     <h3 v-else>{{ totalDone }} / {{ tasks.length }} tasks completed</h3>
     <div v-if="tasks.length" class="button-container">
-      <FilterButton filter="all" @set-filter="setFilter" />
-      <FilterButton filter="todo" @set-filter="setFilter" />
-      <FilterButton filter="done" @set-filter="setFilter" />
+      <FilterButton
+        :current-filter="filter"
+        filter="all"
+        @set-filter="setFilter"
+      />
+      <FilterButton
+        :current-filter="filter"
+        filter="todo"
+        @set-filter="setFilter"
+      />
+      <FilterButton
+        :current-filter="filter"
+        filter="done"
+        @set-filter="setFilter"
+      />
     </div>
     <TaskList
       :tasks="filteredTask"

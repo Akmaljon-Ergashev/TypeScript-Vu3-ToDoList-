@@ -3,6 +3,7 @@ import type { TaskFilter } from "../types";
 
 const props = defineProps<{
   filter: TaskFilter;
+  currentFilter: TaskFilter;
 }>();
 
 const emits = defineEmits<{
@@ -11,7 +12,11 @@ const emits = defineEmits<{
 </script>
 
 <template>
-  <button class="secondary" @click="emits('setFilter', props.filter)">
+  <button
+    class="secondary"
+    @click="emits('setFilter', props.filter)"
+    :class="{ contrast: props.currentFilter === props.filter }"
+  >
     {{ props.filter }}
   </button>
 </template>
