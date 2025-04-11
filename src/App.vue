@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { ref, computed } from "vue";
+import type { Task, TaskFilter } from "./types";
 import TaskForm from "./components/TaskForm.vue";
-import TasList from "./components/TaskList.vue";
+import TaskList from "./components/TaskList.vue";
 import FilterButton from "./components/FilterButton.vue";
 
 const tasks = ref<Task[]>([]);
@@ -62,7 +63,7 @@ function setFilter(value: TaskFilter) {
       <FilterButton filter="todo" @set-filter="setFilter" />
       <FilterButton filter="done" @set-filter="setFilter" />
     </div>
-    <TasList
+    <TaskList
       :tasks="filteredTask"
       @toggle-done="toggleDone"
       @remove-task="removeTask"
